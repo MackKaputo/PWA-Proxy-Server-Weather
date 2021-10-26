@@ -5,14 +5,19 @@ const API_KEY = '65809b45c52c8746d60558f425eb4f08'
 
 export const getWeather = async (query) => {
     //destructure response.data
-    const { data } = await axios.get(URL, {
-        params: {
-            q: query,
-            units: 'metric',
-            appid: API_KEY
-        }
-    })
-
-    return data
+    try {
+        const { data } = await axios.get(URL, {
+            params: {
+                q: query,
+                units: 'metric',
+                appid: API_KEY
+            }
+        })
+        
+        return data
+    } catch (error) {
+        console.log({error})
+        return {error: true }
+    }
    
 }

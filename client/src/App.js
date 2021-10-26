@@ -6,15 +6,30 @@ function App(){
 
     const [query, setQuery] = useState('')
     const [weather, setWeather] = useState({})
+    const [loading, setLoading] = useState(false)
     const search = async (e) => {
         if (e.key === 'Enter') {
+            setLoading(true)
             const data = await getWeather(query)
+            
             setWeather(data)
+            setLoading(false)
             //console.log(data)
         }
     }
+
+    const styles = {
+        backgroudColor: "white",
+        backgroud: "white",
+        color: "white",
+        widht: "50%",
+        margin: "2rem"
+
+    }
     return (
+        
         <div className="main-container">
+            <h1 style={styles}> Enter city name to get weather</h1>
             <input
                 type="text"
                 className="search"
@@ -23,7 +38,7 @@ function App(){
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyPress={search}
             />
-
+            { loading && <div style={styles}><h2>fetching data for {query}... </h2></div>}
             { weather.main && (
                 <div className="city">
                     <h2 className="city-name">
