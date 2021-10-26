@@ -7,7 +7,7 @@ html, body, #root {
 }
 
 .main-container {
-    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.418) ), url('https://images.unsplash.com/photo-1539694733968-e596c9f9afda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.418) ), url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTAwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60');
     background-size: cover;
     background-position: center;
 }

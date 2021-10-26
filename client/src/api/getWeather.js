@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const URL = 'https://api.openweathermap.org/data/2.5/weather'
-const API_KEY = '65809b45c52c8746d60558f425eb4f08'
+const URL = process.env.REACT_APP_URL
+const API_KEY = process.env.REACT_APP_API_KEY
 
 export const getWeather = async (query) => {
     //destructure response.data
@@ -16,7 +16,7 @@ export const getWeather = async (query) => {
         
         return data
     } catch (error) {
-        console.log({error})
+        
         return {error: true }
     }
    
