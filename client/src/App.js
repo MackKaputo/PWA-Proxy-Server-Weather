@@ -7,13 +7,21 @@ function App(){
     const [query, setQuery] = useState('')
     const [weather, setWeather] = useState({})
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
+
     const search = async (e) => {
         if (e.key === 'Enter') {
+            setError(false)
             setLoading(true)
             const data = await getWeather(query)
             
-            setWeather(data)
-            setLoading(false)
+            if(data.error === true) {
+                setLoading(false)
+                setError(true)
+            } else {
+                setWeather(data)
+                setLoading(false)
+            }
             //console.log(data)
         }
     }
@@ -26,6 +34,8 @@ function App(){
         margin: "2rem"
 
     }
+
+    
     return (
         
         <div className="main-container">
@@ -39,7 +49,8 @@ function App(){
                 onKeyPress={search}
             />
             { loading && <div style={styles}><h2>fetching data for {query}... </h2></div>}
-            { weather.main && (
+            {!error ? <React.Fragment>
+                { weather.main && (
                 <div className="city">
                     <h2 className="city-name">
                         <span>{weather.name}</span>
@@ -60,6 +71,9 @@ function App(){
                     </div>
                 </div>
             )}
+            </React.Fragment> : 
+            
+            <div style={styles}><h2>Could not fetch data for the requested city, make sure the spelling is correct</h2></div>}
         </div>
     )
 }
